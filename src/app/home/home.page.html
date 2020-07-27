@@ -11,7 +11,7 @@
 
     <ion-buttons slot="primary">
       <ion-button>CART
-        <ion-badge>0</ion-badge>
+        <ion-badge>{{cartItems.length}}</ion-badge>
       </ion-button>
       <ion-button>
         <ion-icon name="menu"></ion-icon>
@@ -24,8 +24,38 @@
 <ion-content [fullscreen]="true" [scrollEvents]="true" (ionScroll)="logScrolling($event)">
   <ion-grid>
     <ion-row>
-      <ion-col size-lg="2" size-md="3" size="12" *ngFor="let product of productList">
-        <img [src]="product.img">
+      <ion-col size-lg="2" size-md="3" size="12" *ngFor="let product of productList" button class="cols">
+        <div class="imageHolder">
+          <img [src]=" product.img" (click)="onProductSelect(product)">
+        </div>
+        <!-- selection details -->
+        <div class="selectionDetails">
+          <ion-list details="false" lines="none">
+            <!-- product name and pricing-->
+            <ion-item>
+              <ion-label slot="start">{{product.name}}</ion-label>
+              <ion-label slot="end">{{product.price}}</ion-label>
+            </ion-item>
+            <!-- description-->
+            <ion-item>
+              <ion-label class="description">
+                {{product.description}}
+              </ion-label>
+            </ion-item>
+            <!-- CTA-->
+            <ion-item>
+              <ion-buttons class="CTA">
+                <ion-button *ngIf="product.sizeS==true" fill="outline">S
+                </ion-button>
+                <ion-button *ngIf="product.sizeM == true" fill="outline">M
+                </ion-button>
+                <ion-button *ngIf=" product.sizeL == true" fill="outline">L
+                </ion-button>
+                <ion-button (click)="onAddItem(product)" class="dark" fill="solid">ADD TO CART</ion-button>
+              </ion-buttons>
+            </ion-item>
+          </ion-list>
+        </div>
       </ion-col>
     </ion-row>
   </ion-grid>

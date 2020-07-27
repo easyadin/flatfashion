@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActionSheetController, ToastController } from '@ionic/angular';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { Product } from '../model/product';
 
 @Component({
   selector: 'app-home',
@@ -6,47 +9,49 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
-  constructor() { }
+  constructor(
+    private toastController: ToastController,
+    private actionSheetController: ActionSheetController) { }
 
-  productList: any[] = [
+  productList: Product[] = [
     {
       'id': '1',
       'img': '../../assets/main/1.png',
       'name': 'Gucci Star Garden-Print Dress',
       'price': 'AED 455',
       'description': 'From its unique print to the various vintage style influences, the Star-Garden Print Dress by Gucci is an eclectic masterpiece that brings a hint of fun to the fall and winter',
-      'sizeS':true,
-      'sizeM':true,
-      'sizeL': false
+      'sizeS': true,
+      'sizeM': true,
+      'sizeL': true
     },
     {
       'id': '2',
       'img': '../../assets/main/2.png',
-      'name': 'Gucci Star Garden-Print Dress',
+      'name': 'Sterla Duran Dress',
       'price': 'AED 455',
       'description': 'From its unique print to the various vintage style influences, the Star-Garden Print Dress by Gucci is an eclectic masterpiece that brings a hint of fun to the fall and winter',
-      'sizeS':true,
-      'sizeM':true,
+      'sizeS': true,
+      'sizeM': true,
       'sizeL': false
     },
     {
       'id': '3',
       'img': '../../assets/main/3.png',
-      'name': 'Gucci Star Garden-Print Dress',
+      'name': 'Pearl Haute Couture Floral',
       'price': 'AED 455',
       'description': 'From its unique print to the various vintage style influences, the Star-Garden Print Dress by Gucci is an eclectic masterpiece that brings a hint of fun to the fall and winter',
-      'sizeS':true,
-      'sizeM':true,
+      'sizeS': true,
+      'sizeM': true,
       'sizeL': false
     },
     {
       'id': '4',
       'img': '../../assets/main/4.png',
-      'name': 'Gucci Star Garden-Print Dress',
+      'name': 'Summer Sale Casual ',
       'price': 'AED 455',
       'description': 'From its unique print to the various vintage style influences, the Star-Garden Print Dress by Gucci is an eclectic masterpiece that brings a hint of fun to the fall and winter',
-      'sizeS':true,
-      'sizeM':true,
+      'sizeS': true,
+      'sizeM': true,
       'sizeL': false
     },
     {
@@ -55,8 +60,8 @@ export class HomePage implements OnInit {
       'name': 'Gucci Star Garden-Print Dress',
       'price': 'AED 455',
       'description': 'From its unique print to the various vintage style influences, the Star-Garden Print Dress by Gucci is an eclectic masterpiece that brings a hint of fun to the fall and winter',
-      'sizeS':true,
-      'sizeM':true,
+      'sizeS': true,
+      'sizeM': true,
       'sizeL': false
     },
     {
@@ -65,48 +70,48 @@ export class HomePage implements OnInit {
       'name': 'Gucci Star Garden-Print Dress',
       'price': 'AED 455',
       'description': 'From its unique print to the various vintage style influences, the Star-Garden Print Dress by Gucci is an eclectic masterpiece that brings a hint of fun to the fall and winter',
-      'sizeS':true,
-      'sizeM':true,
+      'sizeS': true,
+      'sizeM': true,
       'sizeL': false
     },
     {
       'id': '7',
       'img': '../../assets/main/7.png',
-      'name': 'Gucci Star Garden-Print Dress',
+      'name': 'Summer Sale Casual ',
       'price': 'AED 455',
       'description': 'From its unique print to the various vintage style influences, the Star-Garden Print Dress by Gucci is an eclectic masterpiece that brings a hint of fun to the fall and winter',
-      'sizeS':true,
-      'sizeM':true,
+      'sizeS': true,
+      'sizeM': true,
       'sizeL': false
     },
     {
       'id': '8',
       'img': '../../assets/main/8.png',
-      'name': 'Gucci Star Garden-Print Dress',
+      'name': 'Gucci GG Embroidered Tulle Dress for Girls',
       'price': 'AED 455',
       'description': 'From its unique print to the various vintage style influences, the Star-Garden Print Dress by Gucci is an eclectic masterpiece that brings a hint of fun to the fall and winter',
-      'sizeS':true,
-      'sizeM':true,
+      'sizeS': true,
+      'sizeM': true,
       'sizeL': false
     },
     {
       'id': '9',
       'img': '../../assets/main/9.png',
-      'name': 'Gucci Star Garden-Print Dress',
+      'name': 'Threadz Women Puffed Sleeve Schiffli ',
       'price': 'AED 455',
       'description': 'From its unique print to the various vintage style influences, the Star-Garden Print Dress by Gucci is an eclectic masterpiece that brings a hint of fun to the fall and winter',
-      'sizeS':true,
-      'sizeM':true,
+      'sizeS': true,
+      'sizeM': true,
       'sizeL': false
     },
     {
       'id': '10',
       'img': '../../assets/main/10.png',
-      'name': 'Gucci Star Garden-Print Dress',
+      'name': 'ASOS DESIGN fallen shoulder',
       'price': 'AED 455',
       'description': 'From its unique print to the various vintage style influences, the Star-Garden Print Dress by Gucci is an eclectic masterpiece that brings a hint of fun to the fall and winter',
-      'sizeS':true,
-      'sizeM':true,
+      'sizeS': true,
+      'sizeM': true,
       'sizeL': false
     },
     {
@@ -115,8 +120,8 @@ export class HomePage implements OnInit {
       'name': 'Gucci Star Garden-Print Dress',
       'price': 'AED 455',
       'description': 'From its unique print to the various vintage style influences, the Star-Garden Print Dress by Gucci is an eclectic masterpiece that brings a hint of fun to the fall and winter',
-      'sizeS':true,
-      'sizeM':true,
+      'sizeS': true,
+      'sizeM': true,
       'sizeL': false
     },
     {
@@ -125,8 +130,8 @@ export class HomePage implements OnInit {
       'name': 'Gucci Star Garden-Print Dress',
       'price': 'AED 455',
       'description': 'From its unique print to the various vintage style influences, the Star-Garden Print Dress by Gucci is an eclectic masterpiece that brings a hint of fun to the fall and winter',
-      'sizeS':true,
-      'sizeM':true,
+      'sizeS': true,
+      'sizeM': true,
       'sizeL': false
     },
     {
@@ -135,8 +140,8 @@ export class HomePage implements OnInit {
       'name': 'Gucci Star Garden-Print Dress',
       'price': 'AED 455',
       'description': 'From its unique print to the various vintage style influences, the Star-Garden Print Dress by Gucci is an eclectic masterpiece that brings a hint of fun to the fall and winter',
-      'sizeS':true,
-      'sizeM':true,
+      'sizeS': true,
+      'sizeM': true,
       'sizeL': false
     },
     {
@@ -145,8 +150,8 @@ export class HomePage implements OnInit {
       'name': 'Gucci Star Garden-Print Dress',
       'price': 'AED 455',
       'description': 'From its unique print to the various vintage style influences, the Star-Garden Print Dress by Gucci is an eclectic masterpiece that brings a hint of fun to the fall and winter',
-      'sizeS':true,
-      'sizeM':true,
+      'sizeS': true,
+      'sizeM': true,
       'sizeL': false
     },
     {
@@ -155,8 +160,8 @@ export class HomePage implements OnInit {
       'name': 'Gucci Star Garden-Print Dress',
       'price': 'AED 455',
       'description': 'From its unique print to the various vintage style influences, the Star-Garden Print Dress by Gucci is an eclectic masterpiece that brings a hint of fun to the fall and winter',
-      'sizeS':true,
-      'sizeM':true,
+      'sizeS': true,
+      'sizeM': true,
       'sizeL': false
     },
     {
@@ -165,8 +170,8 @@ export class HomePage implements OnInit {
       'name': 'Gucci Star Garden-Print Dress',
       'price': 'AED 455',
       'description': 'From its unique print to the various vintage style influences, the Star-Garden Print Dress by Gucci is an eclectic masterpiece that brings a hint of fun to the fall and winter',
-      'sizeS':true,
-      'sizeM':true,
+      'sizeS': true,
+      'sizeM': true,
       'sizeL': false
     },
     {
@@ -175,8 +180,8 @@ export class HomePage implements OnInit {
       'name': 'Gucci Star Garden-Print Dress',
       'price': 'AED 455',
       'description': 'From its unique print to the various vintage style influences, the Star-Garden Print Dress by Gucci is an eclectic masterpiece that brings a hint of fun to the fall and winter',
-      'sizeS':true,
-      'sizeM':true,
+      'sizeS': true,
+      'sizeM': true,
       'sizeL': false
     },
     {
@@ -185,18 +190,49 @@ export class HomePage implements OnInit {
       'name': 'Gucci Star Garden-Print Dress',
       'price': 'AED 455',
       'description': 'From its unique print to the various vintage style influences, the Star-Garden Print Dress by Gucci is an eclectic masterpiece that brings a hint of fun to the fall and winter',
-      'sizeS':true,
-      'sizeM':true,
+      'sizeS': true,
+      'sizeM': true,
       'sizeL': false
     }
   ]
 
+  selectedProduct: Product;
+  isProductSelected = false;
+  cartItems: Product[] = [];
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
 
+  // on product select show action sheet for CTA options
+  onProductSelect(product: Product) {
+    // select and unselect product
+    if (this.selectedProduct != undefined && this.selectedProduct.id === product.id) {
+      this.isProductSelected = false;
+      this.selectedProduct = undefined;
+      console.log(this.selectedProduct)
+    } else {
+      this.selectedProduct = product;
+      this.isProductSelected = true;
+    }
   }
 
-  logScrolling($event) {
+  async onAddItem(product: Product) {
+    this.cartItems.push(product)
 
+    const toastIt = await this.toastController.create({
+      message: product.name + ' added to cart',
+      animated:true,
+      duration: 100000,
+      position: 'top',
+      buttons: [
+        {
+          side: 'start',
+          icon: 'star',
+        }
+      ]
+    })
+
+    toastIt.present();
   }
+
+  logScrolling($event) { }
 }
